@@ -1,0 +1,30 @@
+-- PARAMETROS CONFIGURAÇÃO SIGBASES -  PRODUÇÃO
+
+
+client_id - autenticacao-sistema
+
+diasValidade - 0
+
+grant_type - password
+
+senha - ssd03s091@!
+
+senhaToken - kpVxrV4seY8LtCD1
+
+siglaSistema - sigrah
+
+urlConsultaAtualiza - https://sigbases-servicos-dkr.pbh.gov.br/sigbases-resources/rest/usuariosus/consultaatualiza
+
+urlDisponibilidadeServico - https://sigbases-servicos-dkr.pbh.gov.br/sigbases-resources/rest/verifica
+
+urlPesquisaPaciente - https://sigbases-servicos-dkr.pbh.gov.br/sigbases-resources/rest/consulta/usuario
+
+urlServicoSigrah - http://localhost:9180/integracao-pbh/acesso-servico
+
+urlToken - https://acesso.pbh.gov.br/auth/realms/PBH/protocol/openid-connect/token
+
+usuario - sigbases-st
+
+usuarioSistemaAcionador - sigrah
+
+usuarioToken - us-sigrah

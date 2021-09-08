@@ -1,0 +1,17 @@
+--<DS_SCRIPT>
+-- DESCRIÇÃO..: SCRIPT INCLUSÃO DE CAMPOS NA TABELA DBAMV.ENTREGA_EXA_LAB_SETOR
+-- RESPONSAVEL: Fernando Antonio Guarany de Paula Filho
+-- DATA.......: 05/05/2021 10:30
+-- APLICAÇÃO..: SOUL-MV 2020.03.04
+-- ARTEFATO...: TABLE
+--</DS_SCRIPT>
+--<USUARIO=DBAMV>
+
+ALTER TABLE dbamv.entrega_exa_lab_setor ADD NR_PCE NUMBER(8);
+/
+ALTER TABLE dbamv.entrega_exa_lab_setor ADD TP_ETAPA VARCHAR2(20);
+/
+ALTER TABLE dbamv.exa_lab ADD DH_TEMPO_MINIMO NUMBER(12);
+/
+ALTER TABLE dbamv.exa_lab ADD DH_DIAS NUMBER(12);
+/

@@ -1,0 +1,61 @@
+------------------------------------------ ORACLE ------------------------------------------
+--<DS_SCRIPT>
+-- DESCRICAO...: Tabela de log para erros sigbases PBH
+-- RESPONSAVEL.: Fernando Guarany
+-- DATA........: 18/11/2020
+-- APLICAO...: SOUL - PROJETO BH
+-- VERSAO......: A PARTIR DA VERSÃO 2020.0.0
+--</DS_SCRIPT>
+--<USUARIO=DBAMV>
+
+CREATE TABLE dbamv.LOG_PACIENTE_SIGBASES(
+CD_ID number(4,0),
+NM_PACIENTE VARCHAR2(120),
+DT_NASCIMENTO DATE,
+NR_CPF NUMBER(11),
+NR_CNS NUMBER(16),
+CD_MULTI_EMPRESA NUMBER(4),
+DS_ERRO VARCHAR2(1000),
+DH_CADASTRO DATE
+);
+/
+
+ALTER TABLE dbamv.LOG_PACIENTE_SIGBASES ADD CONSTRAINT PK_PACI_SIGBASES
+PRIMARY KEY (CD_ID);
+/
+
+ALTER TABLE dbamv.LOG_PACIENTE_SIGBASES ADD CONSTRAINT FK_PACI_SIGBASES_EMP
+FOREIGN KEY (CD_MULTI_EMPRESA)
+REFERENCES DBAMV.MULTI_EMPRESAS(CD_MULTI_EMPRESA);
+
+CREATE PUBLIC SYNONYM LOG_PACIENTE_SIGBASES FOR dbamv.LOG_PACIENTE_SIGBASES;
+/
+
+GRANT ALL ON dbamv.LOG_PACIENTE_SIGBASES TO dbamv, dbamvfor, sigsaudej, mv2000, mvintegra;
+/
+
+create sequence dbamv.SEQ_LOG_PAC_SIGBASES
+minvalue 1
+maxvalue 9999999999
+start with 1
+increment by 1
+nocache
+cycle;
+/
+
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.CD_ID IS 'Sequence da tabela';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.NM_PACIENTE IS 'Campo informa o nome do paciente com restrições';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.DT_NASCIMENTO IS 'Campo Informa a data de nascimento do mesmo';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.NR_CPF IS 'Campo informa o CPF do paciente';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.NR_CNS IS 'Campo informa o CNS do paciente';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.CD_MULTI_EMPRESA IS 'Campo valida a empresa onde ocorreu o problema';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.DS_ERRO IS 'Descrição do erro';
+/
+COMMENT ON COLUMN dbamv.LOG_PACIENTE_SIGBASES.DH_CADASTRO IS 'data e hora em que o erro ocorreu';
+/
